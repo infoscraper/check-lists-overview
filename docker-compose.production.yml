@@ -1,0 +1,51 @@
+version: '3.9'
+
+services:
+  postgres:
+    image: postgres:15-alpine
+    container_name: compliance_postgres
+    environment:
+      POSTGRES_USER: compliance
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-change_this_password}
+      POSTGRES_DB: compliance_db
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "127.0.0.1:5432:5432"  # Только локальный доступ
+    restart: unless-stopped
+    networks:
+      - compliance_network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U compliance"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  backend:
+    build: ./backend
+    container_name: compliance_backend
+    environment:
+      DATABASE_URL: postgresql://compliance:${DB_PASSWORD:-change_this_password}@postgres:5432/compliance_db
+      ENVIRONMENT: production
+      SECRET_KEY: ${SECRET_KEY:-change_this_secret_key}
+      LOG_LEVEL: ${LOG_LEVEL:-INFO}
+      CORS_ORIGINS: ${CORS_ORIGINS:-["https://check-lists-cft.vercel.app"]}
+      PORT: 8000
+    ports:
+      - "127.0.0.1:8000:8000"  # Только локальный доступ, Nginx будет проксировать
+    depends_on:
+      postgres:
+        condition: service_healthy
+    restart: unless-stopped
+    networks:
+      - compliance_network
+    volumes:
+      - ./backend:/app
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8000
+
+volumes:
+  postgres_data:
+
+networks:
+  compliance_network:
+    driver: bridge
