@@ -1,9 +1,8 @@
 import { useState, useEffect, useCallback } from 'react';
 import { recordsApi } from '../api/records';
-import { importApi } from '../api/import';
 import { exportApi } from '../api/export';
 import { checklistsApi, Checklist } from '../api/checklists';
-import { ProcessRecord, TableSource, TABLE_SOURCE_NAMES } from '../types';
+import { ProcessRecord } from '../types';
 import ImportDialog from './ImportDialog';
 import RecordModal from './RecordModal';
 import AddChecklistModal from './AddChecklistModal';

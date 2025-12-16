@@ -2,7 +2,7 @@ import { useState, useEffect, useMemo, useCallback } from 'react';
 import { dashboardApi } from '../api/dashboard';
 import { recordsApi } from '../api/records';
 import { checklistsApi } from '../api/checklists';
-import { DashboardSummary, ProcessRecord, STATUS_COLORS, TABLE_SOURCE_NAMES, TableSource, Checklist } from '../types';
+import { DashboardSummary, ProcessRecord, TableSource, Checklist } from '../types';
 import './Dashboard.css';
 
 const Dashboard = () => {
