@@ -1,0 +1,235 @@
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: white;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 600px;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.modal-header h3 {
+  margin: 0;
+  color: #1e293b;
+}
+
+.modal-close {
+  background: none;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+  color: #64748b;
+  line-height: 1;
+  padding: 0;
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-close:hover {
+  color: #1e293b;
+}
+
+.modal-body {
+  padding: 1.5rem;
+  flex: 1;
+  overflow-y: auto;
+}
+
+.file-input-container {
+  margin-bottom: 1.5rem;
+}
+
+.file-input-label {
+  display: block;
+  padding: 2rem;
+  border: 2px dashed rgba(0, 0, 0, 0.23);
+  border-radius: 4px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  background-color: transparent;
+}
+
+.file-input-label:hover {
+  border-color: #1976d2;
+  background-color: rgba(25, 118, 210, 0.04);
+  border-style: solid;
+}
+
+.file-input {
+  display: none;
+}
+
+.file-input-text {
+  color: #64748b;
+  font-size: 1rem;
+}
+
+.error-message {
+  padding: 1rem;
+  background-color: #ffebee;
+  color: #c62828;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+  border-left: 4px solid #d32f2f;
+  font-size: 0.875rem;
+}
+
+.import-result {
+  margin-top: 1.5rem;
+}
+
+.import-result h4 {
+  margin-bottom: 1rem;
+  color: #1e293b;
+}
+
+.result-stats {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.stat-item {
+  flex: 1;
+  padding: 1rem;
+  background-color: #f8fafc;
+  border-radius: 6px;
+  text-align: center;
+}
+
+.stat-item.success {
+  background-color: #dcfce7;
+}
+
+.stat-item.error {
+  background-color: #fee2e2;
+}
+
+.stat-label {
+  display: block;
+  font-size: 0.85rem;
+  color: #64748b;
+  margin-bottom: 0.5rem;
+}
+
+.stat-value {
+  display: block;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #1e293b;
+}
+
+.errors-list {
+  margin-top: 1rem;
+}
+
+.errors-list h5 {
+  margin-bottom: 0.5rem;
+  color: #991b1b;
+  font-size: 0.9rem;
+}
+
+.errors-scroll {
+  max-height: 200px;
+  overflow-y: auto;
+  border: 1px solid #e2e8f0;
+  border-radius: 4px;
+  padding: 0.5rem;
+}
+
+.error-item {
+  padding: 0.5rem;
+  font-size: 0.85rem;
+  color: #991b1b;
+  border-bottom: 1px solid #fee2e2;
+}
+
+.error-item:last-child {
+  border-bottom: none;
+}
+
+.modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  padding: 1.5rem;
+  border-top: 1px solid #e2e8f0;
+}
+
+.modal-footer .btn {
+  min-width: 120px;
+}
+
+/* Material Design стили для кнопок в модальных окнах */
+.modal-footer .btn {
+  padding: 0.625rem 1.25rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.08);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: 36px;
+}
+
+.modal-footer .btn:hover:not(:disabled) {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15), 0 2px 4px rgba(0, 0, 0, 0.12);
+  transform: translateY(-1px);
+}
+
+.modal-footer .btn:active {
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1), 0 1px 1px rgba(0, 0, 0, 0.08);
+  transform: translateY(0);
+}
+
+.modal-footer .btn-primary {
+  background-color: #1976d2;
+  color: white;
+}
+
+.modal-footer .btn-primary:hover:not(:disabled) {
+  background-color: #1565c0;
+}
+
+.modal-footer .btn-secondary {
+  background-color: #616161;
+  color: white;
+}
+
+.modal-footer .btn-secondary:hover:not(:disabled) {
+  background-color: #424242;
+}
+
