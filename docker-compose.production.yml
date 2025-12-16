@@ -6,7 +6,7 @@ services:
     container_name: compliance_postgres
     environment:
       POSTGRES_USER: compliance
-      POSTGRES_PASSWORD: ${DB_PASSWORD:-change_this_password}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-root}
       POSTGRES_DB: compliance_db
     volumes:
       - postgres_data:/var/lib/postgresql/data
@@ -25,9 +25,9 @@ services:
     build: ./backend
     container_name: compliance_backend
     environment:
-      DATABASE_URL: postgresql://compliance:${DB_PASSWORD:-change_this_password}@postgres:5432/compliance_db
+      DATABASE_URL: postgresql://compliance:${DB_PASSWORD:-root}@postgres:5432/compliance_db
       ENVIRONMENT: production
-      SECRET_KEY: ${SECRET_KEY:-change_this_secret_key}
+      SECRET_KEY: ${SECRET_KEY:-7mK9pL2xQ8vN4jR6sT1wU5yH3zB0cD4eF9gJ2kM5nP7qS0tV3uW6xY8zA1bC3d}
       LOG_LEVEL: ${LOG_LEVEL:-INFO}
       CORS_ORIGINS: ${CORS_ORIGINS:-["https://check-lists-cft.vercel.app"]}
       PORT: 8000
